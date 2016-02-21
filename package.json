@@ -1,0 +1,14 @@
+{
+  "name": "property-extras",
+  "description": "a chrome extension to extra info into myhome.ie + daft.ie",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-clean": "~0.3.1",
+    "gulp-jasmine": "~2.3.0",
+    "gulp-jasmine-phantom": "~2.1.2",
+    "gulp-jshint": "~2.0.0",
+    "gulp-zip": "~3.2.0"
+  }
+}
