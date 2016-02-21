@@ -1,5 +1,5 @@
-# ber-helper
-A chrome extension for loading ber data in daft.ie or myhome.ie
+# property-extras
+A chrome extension for adding prices per square foot and meter in daft.ie or myhome.ie
 
 
 
