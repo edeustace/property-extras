@@ -23,7 +23,10 @@
     };
 
     obj.setPricePerArea = function(ppa){
-      $('#smi-price-string').append(' (m²: €' + ppa.perSqM + ', ft²: €' + ppa.perSqFt + ')' );
+      var node = doc.querySelector('#smi-price-string');
+      var extras = '(m²: €' + ppa.perSqM + ', ft²: €' + ppa.perSqFt + ')';
+      var newContent = node.textContent + ' ' + extras;
+      node.textContent = newContent;
     };
 
     obj.getSizes = function() {

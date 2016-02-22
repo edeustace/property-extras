@@ -23,7 +23,9 @@
     };
 
     obj.setPricePerArea = function(ppa){
-      $('.brochurePrice').append('(m²: €' + ppa.perSqM + ', ft²: €' + ppa.perSqFt + ')' );
+      var existing = doc.querySelector('.brochurePrice').textContent; 
+      var extra = '(m²: €' + ppa.perSqM + ', ft²: €' + ppa.perSqFt + ')';
+      doc.querySelector('.brochurePrice').innerHTML = existing + ' ' + extra;
     };
 
     obj.getSizes = function() {
