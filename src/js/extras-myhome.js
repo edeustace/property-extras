@@ -13,11 +13,27 @@
 
       if(el){
         var trimmed = el.textContent.trim();
-        var numbersOnly = trimmed.replace('€', '').replace(/,/g, '').replace(/\./g, '');
-        try {
-          return parseInt(numbersOnly, 10);
-        } catch (e){
-          console.error('failed to parse: ', numbersOnly, 'as an int');
+
+        if(trimmed === 'Sale Agreed'){
+          var xpath = '//script[contains(@src,"kvminprice")]';
+          var root = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+          if(root && root.singleNodeValue){
+            console.log(root.singleNodeValue);
+            var src = root.singleNodeValue.getAttribute('src');
+            var matches = src.match(/^.*?kvminprice=(\d*)[\.|;].*/);
+            if(matches && matches.length === 2){
+              var kvmPrice = matches[1];
+              el.textContent = el.textContent + '(asking:' + kvmPrice + ')';
+              return kvmPrice;
+            }
+          }
+        } else {
+          var numbersOnly = trimmed.replace('€', '').replace(/,/g, '').replace(/\./g, '');
+          try {
+            return parseInt(numbersOnly, 10);
+          } catch (e){
+            console.error('failed to parse: ', numbersOnly, 'as an int');
+          }
         }
       }
     };
