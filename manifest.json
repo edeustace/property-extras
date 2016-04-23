@@ -13,18 +13,23 @@
     {
       "matches": ["http://www.daft.ie/*", "http://www.myhome.ie/*", "https://www.daft.ie/*", "https://www.myhome.ie/*"],
       "js": [
-        "src/js/extras-common.js"
+        "src/js/add-extra-info.js"
         ],
       "run_at" : "document_start"
     },
     {
       "matches": ["http://www.myhome.ie/*", "https://www.myhome.ie/*"],
-      "js": ["src/js/extras-myhome.js", "src/js/run-myhome.js"],
+      "js": [
+        "src/js/my-home/list-entry.js", 
+        "src/js/my-home/page.js", 
+        "src/js/my-home/run.js"],
       "run_at" : "document_start"
     },
     {
       "matches": ["http://www.daft.ie/*", "https://www.daft.ie/*"],
-      "js": ["src/js/extras-daft.js", "src/js/run-daft.js"],
+      "js": [
+        "src/js/daft/page.js",
+        "src/js/daft/run.js"],
       "run_at" : "document_start"
     }
   ]

@@ -1,15 +1,12 @@
-(function(root) {
+(function(root){
 
   root.com = root.com || {};
-  root.com.ee = root.com.ee || {};
-
-  root.com.ee.ExtrasMyHome = function ExtrasMyHome(doc) {
-
-    var obj = Object.create(new com.ee.ExtrasCommon());
+  com.ee  = com.ee || {};
+  com.ee.MyHomePage = function(doc, node){
     
-    obj.getAsking = function() {
+    this.getAsking = function() {
 
-      var el = doc.querySelector('.brochurePrice');
+      var el = node.querySelector('.brochurePrice');
 
       if(el){
         var trimmed = el.textContent.trim();
@@ -38,13 +35,13 @@
       }
     };
 
-    obj.setPricePerArea = function(ppa){
-      var existing = doc.querySelector('.brochurePrice').textContent; 
+    this.setPricePerArea = function(ppa){
+      var existing = node.querySelector('.brochurePrice').textContent; 
       var extra = '(m²: €' + ppa.perSqM + ', ft²: €' + ppa.perSqFt + ')';
-      doc.querySelector('.brochurePrice').innerHTML = existing + ' ' + extra;
+      node.querySelector('.brochurePrice').innerHTML = existing + ' ' + extra;
     };
 
-    obj.getSizes = function() {
+    this.getSizes = function() {
       var description = doc
         .querySelector('.brochureDescription');
 
@@ -60,9 +57,5 @@
         }
       } 
     };
-
-    return obj;
   };
-
-
 })(this);

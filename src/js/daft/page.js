@@ -3,13 +3,11 @@
   root.com = root.com || {};
   root.com.ee = root.com.ee || {};
 
-  root.com.ee.ExtrasDaft = function ExtrasDaft(doc) {
+  root.com.ee.DaftPage = function DaftPage(doc, node) {
 
-    var obj = Object.create(new com.ee.ExtrasCommon());
+    this.getAsking = function() {
 
-    obj.getAsking = function() {
-
-      var el = document.querySelector('#smi-price-string');
+      var el = node.querySelector('#smi-price-string');
 
       if(el){
         var trimmed = el.textContent.trim();
@@ -22,14 +20,14 @@
       }
     };
 
-    obj.setPricePerArea = function(ppa){
-      var node = doc.querySelector('#smi-price-string');
+    this.setPricePerArea = function(ppa){
+      var n = node.querySelector('#smi-price-string');
       var extras = '(m²: €' + ppa.perSqM + ', ft²: €' + ppa.perSqFt + ')';
-      var newContent = node.textContent + ' ' + extras;
-      node.textContent = newContent;
+      var newContent = n.textContent + ' ' + extras;
+      n.textContent = newContent;
     };
 
-    obj.getSizes = function() {
+    this.getSizes = function() {
 
       var xpath = '//strong[contains(text(), "Overall Floor Area:")]';
       var root = doc.evaluate(xpath, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
@@ -44,7 +42,6 @@
         }
       }
     };
-    return obj;
   };
 
 })(this);
